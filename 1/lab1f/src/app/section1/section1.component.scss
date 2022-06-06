@@ -1,0 +1,25 @@
+section{
+    display: flex;
+    justify-content:space-between;
+   }
+   
+   .item{
+       padding: 20px;
+       margin: 20px;
+   
+       height: fit-content;
+       background-color: wheat;
+       border: 2px solid green;
+   }
+   
+   .side{
+       background-image: url(https://ceha.com.ua/wp-content/uploads/2017/04/sport-recreation-competition-vector-flat.jpg);
+       
+       height: 600px;
+       width: 100px;
+   }
+   
+   .side-img{
+           height: 700px;
+           width: 100px;
+   }
