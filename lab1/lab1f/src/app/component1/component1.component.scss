@@ -1,0 +1,48 @@
+section{
+    display: grid;
+    grid-template-columns: 100px auto 100px;
+}
+.side{
+    background-image: url(https://ceha.com.ua/wp-content/uploads/2017/04/sport-recreation-competition-vector-flat.jpg);
+    height: auto;
+    width: 100px;
+}
+.gr{
+    margin: 30px 30px;
+    display: flex;
+    justify-content:space-between;
+}
+.one{
+    display: grid;
+    grid-template-rows: auto;
+    padding: 20px;
+    margin: 50px;
+    width: 250px;
+    height: fit-content;
+    background-color: wheat;
+    border: 2px solid green;
+    text-align: center;
+}
+
+a{
+    margin-left: 30px;
+}
+
+.gr2{
+    margin-top: 60px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-bottom: 60px;
+}
+.add, .remove, .update{
+    display: grid;
+    grid-template-rows: 50px auto;
+}
+.addbtn, .rmbtn, .updbtn{
+    width: 244px;
+    text-align: center;
+}
+.add-hidden, .rm-hidden, .upd-hidden{
+    display: none;
+}

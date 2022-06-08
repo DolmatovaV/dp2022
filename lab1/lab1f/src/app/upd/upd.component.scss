@@ -1,0 +1,13 @@
+.updform{
+    display: grid;
+    grid-template-rows: auto;
+    padding: 20px;
+    margin-top: 10px;
+    width: 200px;
+    height: fit-content;
+    background-color: wheat;
+    border: 2px solid green;
+    input{
+        margin-bottom: 10px;
+    }
+}

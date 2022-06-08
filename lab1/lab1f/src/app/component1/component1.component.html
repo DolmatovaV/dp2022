@@ -1,0 +1,29 @@
+<section>
+<div class="side"></div>
+<div class="main">
+<button (click)="getSport()">Refresh</button>
+<div class="gr">
+    <div class="one" *ngFor="let a of sportList">
+        <h1>{{a.title}}</h1>
+        <h2>{{a.desc}}<br>
+        Price: {{a.price}}</h2>
+    </div>
+</div>
+<a href="./Servlet1">Servlet</a>
+<div class="gr2">
+    <div class="add">
+        <button class="addbtn" (click)="getSport()">Add</button>
+        <div class="add-hidden" id="add-hidden"><app-add></app-add></div>
+    </div>
+    <div class="update">
+        <button class="updbtn" (click)="getSport()">Update</button>
+        <div class="upd-hidden" id="upd-hidden"><app-upd></app-upd></div>
+    </div>
+    <div class="remove">
+        <button class="rmbtn" (click)="getSport()">Remove</button>
+        <div class="rm-hidden" id="rm-hidden"><app-rm></app-rm></div>
+    </div>
+</div>
+</div>
+<div class="side"></div>
+</section>
