@@ -15,11 +15,11 @@ public class Sport implements Serializable {
 	private int price;
 	private String desc;
 	
-	public Sport(int id,String title, int price, String desc) {
+	public Sport(int id,String title, float f, String desc) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.price = price;
+		this.price = float;
 		this.desc = desc;
 	}
 	public int getId() {

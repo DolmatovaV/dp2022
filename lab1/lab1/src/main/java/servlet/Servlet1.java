@@ -1,14 +1,20 @@
 package servlet;
 
+
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jdbc.Connect;
+import jdbc.SqlCRUD;
 import sports.Sport;
 import sports.Mock;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import crud.Lab2CrudInterface;
@@ -16,24 +22,29 @@ import crud.Lab2CrudInterface;
 /**
  * Servlet implementation class Servlet1
  */
+
 @WebServlet("/Servlet1/*")
 public class Servlet1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private List<Sport> lu = new Mock().getSportList();
-
-	ServletConfigInterface servletConfig;
-	Lab2CrudInterface lab2Crud;
 	
-	 /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Servlet1() {
-        super();
-        // TODO Auto-generated constructor stub
-        this.servletConfig = new ServletConfig();
-        this.lab2Crud =servletConfig.getCrud();
-    }
-        
+	LabCRUDinterface<Sport> crud = new SqlCRUD();
+
+    
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub	
+		
+		crud = new SqlCRUD();
+	}
+	
+	public void destroy() {
+		// TODO Auto-generated method stub
+		try {
+			((SqlCRUD) crud).getConnection().close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -41,7 +52,7 @@ public class Servlet1 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		setAccessControlHeaders(response);
 		response.setContentType("application/json");
-		response.getWriter().println(lu);
+		response.getWriter().println(crud.read());
 	}
 
 	/**
@@ -51,8 +62,7 @@ public class Servlet1 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		setAccessControlHeaders(response);
 		Sport sport = Helpers.sportParse(request);
-		sport.setId(Helpers.getNextId(lu));
-		lu.add(sport);
+		crud.create(sport);
 		doGet(request, response);
 	}
 
@@ -64,10 +74,9 @@ public class Servlet1 extends HttpServlet {
 		setAccessControlHeaders(response);
 		Sport sport = Helpers.sportParse(request);
 		int Id = Integer.parseInt(request.getPathInfo().substring(1));
-		System.out.println(Id);
+		
 		response.setContentType("application/json");
-		int index = Helpers.getIndexBySportId(Id,lu);
-		lu.set(index,sport);
+		crud.update(Id, sport);
 		doGet(request, response);
 	}
 	
@@ -78,10 +87,9 @@ public class Servlet1 extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		setAccessControlHeaders(response);
 		int Id = Integer.parseInt(request.getPathInfo().substring(1));
-		System.out.println(Id);
+		
 		response.setContentType("application/json");
-		int index = Helpers.getIndexBySportId(Id,lu);
-		lu.remove(index);
+		crud.delete(Id);
 		doGet(request, response);
 	}
 	
