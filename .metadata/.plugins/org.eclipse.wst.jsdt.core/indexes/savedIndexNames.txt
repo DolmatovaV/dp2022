@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+D:\University\обробка даних\try 4 at2\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2391363819.index
-1002583957.index
-87111012.index
-1331949828.index
-2937122876.index
-2601367080.index

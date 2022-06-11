@@ -1,7 +1,0 @@
-package jdbc;
-
-import servlet.LabCRUDinterface;
-
-public class SqlCRUD implements LabCRUDinterface<T> {
-
-}
